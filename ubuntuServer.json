@@ -1,14 +1,23 @@
 {
+  "variables": {
+    "client_id": "",
+    "client_secret": "",
+    "tenant_id": "",
+    "subscription_id": "",
+    "resource_group_name": "packerResourceGroup",
+    "storage_account": "packerstorageaccount"
+  },
+
   "builders": [{
     "type": "azure-arm",
 
-    "client_id": "my-id",
-    "client_secret": "my-secret",
-    "tenant_id": "my-id",
-    "subscription_id": "my-id",
+    "client_id": "{{user `client_id`}}",
+    "client_secret": "{{user `client_secret`}}",
+    "tenant_id": "{{user `tenant_id`}}",
+    "subscription_id": "{{user `subscription_id`}}",
 
-    "resource_group_name": "packerresourceGroup",
-    "storage_account": "packersa100",
+    "resource_group_name": "{{user `resource_group_name`}}",
+    "storage_account": "{{user `storage_account`}}",
 
     "capture_container_name": "images",
     "capture_name_prefix": "packer",

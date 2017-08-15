@@ -8,14 +8,15 @@
 import subprocess
 
 TEMPLATE = 'ubuntuServer.json'
+VARFILE = 'varfile'
 
 def validate(template=TEMPLATE):
-    print("execuet validate")
-    subprocess.call('start /wait packer validate '+str(template), shell=True)
+    print("execute validate")
+    subprocess.call('start /wait packer validate -var-file='+str(varfile)+'.json '+str(template), shell=True)
 
 def run(template=TEMPLATE):
     print('execute runner')
-    subprocess.call("start /wait packer build "+str(template), shell=True)
+    subprocess.call('start /wait packer validate -var-file='+str(varfile)+'.json '+str(template), shell=True)
 
 if __name__ == "__main__":
     try:
