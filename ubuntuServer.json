@@ -2,10 +2,10 @@
   "builders": [{
     "type": "azure-arm",
 
-    "client_id": "c7ebe337-c505-4d99-a09c-359c6e994219",
-    "client_secret": "84146934-f309-47e1-b66d-dee0f23268a5",
-    "tenant_id": "72f988bf-86f1-41af-91ab-2d7cd011db47",
-    "subscription_id": "69edde7d-b2fe-4eae-911d-8a9a491bee69",
+    "client_id": "my-id",
+    "client_secret": "my-secret",
+    "tenant_id": "my-id",
+    "subscription_id": "my-id",
 
     "resource_group_name": "packerresourceGroup",
     "storage_account": "packersa100",
