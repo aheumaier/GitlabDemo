@@ -36,28 +36,17 @@
     "vm_size": "Standard_DS2_v2"
   }],
   "provisioners": [{
-    "type": "shell",
-    "inline_shebang": "/bin/sh -x",
-    "execute_command": "chmod +x {{ .Path }}; {{ .Vars }} sudo -E sh '{{ .Path }}'",
-    "inline": [
-      "export DEBIAN_FRONTEND=noninteractive",
-      "apt-get update && apt-get -y upgrade",
-      "apt-get -y install nginx curl openssh-server ca-certificates postfix",
-      "curl -sS https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.deb.sh | bash",
-      "apt-get -y install gitlab-ce",
-      "mkdir -p /gitlab-data",
-      "/usr/sbin/waagent -force -deprovision+user && export HISTSIZE=0 && sync"
-    ]
-  },
-  {
-    "type": "file",
-    "source": "configs/gitlab.rb",
-    "destination": "/tmp/gitlab.rb"
-  }, 
-  {
-    "type": "shell",
-    "script": "configs/gitlab-reconfigure.sh",
-    "inline_shebang": "/usr/bin/env bash",
-    "execute_command": "chmod +x {{ .Path }}; {{ .Vars }} sudo -E sh '{{ .Path }}'"
-  }]
+      "type": "shell",
+      "inline_shebang": "/bin/sh -x",
+      "inline": [
+        "export DEBIAN_FRONTEND=noninteractive",
+        "sudo apt-get update && sudo apt-get -y install puppet"
+      ]
+    },
+    {
+      "type": "puppet-masterless",
+      "manifest_file": "puppet/site.pp",
+      "module_paths": ["puppet/modules"]
+    }
+  ]
 }

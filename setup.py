@@ -7,7 +7,7 @@
 #  
 import subprocess
 
-TEMPLATE = 'ubuntuServer.json'
+TEMPLATE = 'gitlab-ubuntu-docker.json'
 VARFILE = 'varfile'
 
 def validate(template=TEMPLATE):
